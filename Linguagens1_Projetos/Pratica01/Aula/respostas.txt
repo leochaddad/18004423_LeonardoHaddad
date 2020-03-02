@@ -1,0 +1,15 @@
+1) /Library/Java/JavaVirtualMachines/jdk-13.0.2.jdk
+
+2)  /Library/Java/JavaVirtualMachines/jdk-13.0.2.jdk/Contents/Home/bin/javac
+    /Library/Java/JavaVirtualMachines/jdk-13.0.2.jdk/Contents/Home/bin/java
+
+3) javac nomedoarquivo
+
+4) java nomedoarquivo
+
+5) É uma variavel que roda no sistema operacional e pode ser acessada pelo terminal
+
+6)
+
+8) É onde fica o JDK
+
