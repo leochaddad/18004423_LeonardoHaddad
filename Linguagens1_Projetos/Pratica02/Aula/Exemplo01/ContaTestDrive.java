@@ -1,5 +1,6 @@
+package exemplo01;
 public class ContaTestDrive{
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
         //Declara c1 sem nada dentro
         Conta c1, c2;
         //Instancia conta - coloca referencia de um objeto

@@ -18,7 +18,8 @@ public class EntradaDeDados{
             System.out.println("N1 Maior");
         }
         else{
-            System.out.println("N2 é maior");
+            System.out.println("N2 é maior!");
+
         }
    }
 }
