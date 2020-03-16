@@ -1,4 +1,4 @@
-package exemplo01;
+
 public class Conta {
     
     public int numero;
@@ -30,6 +30,6 @@ public class Conta {
     }
 
     void vizualizarSaldo(){
-        System.out.println("Saldo: R$" + this.saldo);
+        System.out.println("Saldo  R$" + this.saldo);
     }    
 }
