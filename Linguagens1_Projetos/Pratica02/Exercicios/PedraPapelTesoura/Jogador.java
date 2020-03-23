@@ -1,24 +1,14 @@
-
-public class Jogador{
-    String nome;
-    Jogada jogada = new Jogada();
-    int pontuação;
-
-    void vence(){
-        this.pontuação++;
-        System.out.println(this.nome+" ganhou!");
+public class Jogador {
+    public String nome;
+    private Jogada jogada;
+    public Jogador(String nome, String escolha){
+        this.jogada = new Jogada(escolha);
+        this.nome = nome;
     }
-
-
-    void escolherJogada(){
-        System.out.println("Jogador " +this.nome+ ", escolha a jogada: ");
-        do{
-            this.jogada.definir();
-            if(!this.jogada.Valida()){
-                System.out.println("Jogada inválida, digite novamente: ");
-            };
-        } while(!this.jogada.Valida());
-    };
-
-
+    public Jogada getJogada(){
+        return jogada;
+    }
+    public String competicao(Jogador player2){
+        return jogada.avaliar(player2.getJogada());
+    }
 }

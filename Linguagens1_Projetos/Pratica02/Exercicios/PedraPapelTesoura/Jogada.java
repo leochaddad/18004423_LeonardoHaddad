@@ -1,15 +1,37 @@
-import java.util.Scanner;
+public class Jogada {
 
-public class Jogada{
-    String jogada;
-    boolean Valida(){
-        return(this.jogada.equals("pedra")||this.jogada.equals("papel")||this.jogada.equals("tesoura"));
-    };  
+    private String escolha, ganhoDe, percoDe;
 
-    void definir(){
-        final Scanner scanner  = new Scanner(System.in);
-        this.jogada = scanner.nextLine().toLowerCase();    
+    public static final String PEDRA = "pedra";
+    public static final String TESOURA = "tesoura";
+    public static final String PAPEL = "papel";
+
+    public Jogada (String opcao) {
         
+        if(opcao.equals(Jogada.PEDRA)) {
+            ganhoDe = Jogada.TESOURA;
+            percoDe = Jogada.PAPEL;
+        } else if(opcao.equals("papel")){
+            ganhoDe = "pedra";
+            percoDe = "tesoura";
+        } else {
+            ganhoDe = "papel";
+            percoDe = "pedra";
+        }
+        escolha = opcao;
+    }
 
-    };
+    public String avaliar(Jogada jogada){
+        if(jogada.getEscolha().equals(this.ganhoDe)){
+            return "Ganhei";
+        } else if(jogada.getEscolha().equals(this.percoDe)){
+            return "Perdi";
+        }
+        else{
+            return "Empate";
+        }
+    }
+    public String getEscolha() {
+        return this.escolha;
+    }
 }

@@ -1,14 +1,38 @@
-public class Jogo{
+import java.util.Scanner;
 
-    void Jogar(Jogador p1, Jogador p2){
-        p1.escolherJogada();
-        p2.escolherJogada();
-        boolean aux1 = (p1.jogada.jogada.equals("pedra")&&p2.jogada.jogada.equals("tesoura"));
-        aux1 =  aux1 || (p1.jogada.jogada.equals("papel")&&p2.jogada.jogada.equals("pedra"));
-        aux1 = aux1 || (p1.jogada.jogada.equals("pedra")&&p2.jogada.jogada.equals("tesoura"));
-        if (p1.jogada.jogada.equals(p2.jogada.jogada)) System.out.println("Empate!");
-        else if (aux1) p1.vence();
-        else p2.vence();
+public class Jogo {
+    private Jogador j1 , j2;
+    public void jogar() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Jogador 1, digite seu nome");
+        String nome = scanner.nextLine();
+        System.out.println("Jogador 1, digite sua escolha \n1-Pedra\n2-Papel\n3-Tesoura");
+        int escolha = Integer.parseInt(scanner.nextLine());
+
+        switch (escolha){
+            case 1:
+                j1 = new Jogador(nome, Jogada.PEDRA); break;
+            case 2:
+                j1 = new Jogador(nome, Jogada.TESOURA); break;
+            default:
+                j1 = new Jogador(nome, Jogada.PAPEL); break;
+        }
+
+        System.out.println("Jogador 2, digite seu nome");
+        nome = scanner.nextLine();
+        System.out.println("Jogador 2, digite sua escolha \n1-Pedra\n2-Papel\n3-Tesoura");
+        escolha = Integer.parseInt(scanner.nextLine());
+        switch(escolha){
+            case 1:
+                j2 = new Jogador(nome, Jogada.PEDRA); break;
+            case 2:
+                j2 = new Jogador(nome, Jogada.PAPEL); break;
+            
+            case 3:
+                j2 = new Jogador(nome, Jogada.PAPEL); break;
+        }
+
+        j1.competicao(j2);
+        scanner.close();
     }
-    
 }
