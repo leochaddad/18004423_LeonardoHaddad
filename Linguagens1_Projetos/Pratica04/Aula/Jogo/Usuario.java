@@ -1,13 +1,11 @@
 package Jogo;
 public class Usuario {
-    private String nickname, password, email;
+    private String nickname, password;
 
     public Usuario(String nickname, String password, String email) {
         this.nickname = nickname;
         this.password = password;
-        this.email = email;
     }
-
     public boolean validarSenha(String senha){
         return senha.equals(password);
     }
