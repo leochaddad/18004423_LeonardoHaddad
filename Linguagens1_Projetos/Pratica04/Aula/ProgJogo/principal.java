@@ -1,6 +1,6 @@
 package ProgJogo;
 import java.util.Scanner;
-public class Main {
+public class principal {
     public static void main(final String[] args) {
         final Scanner scanner = new Scanner(System.in);
         String nome, genero, descricao;
