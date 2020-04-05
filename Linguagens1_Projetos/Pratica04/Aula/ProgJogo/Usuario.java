@@ -1,4 +1,4 @@
-package Jogo;
+package ProgJogo;
 public class Usuario {
     private String nickname, password;
 

@@ -1,4 +1,4 @@
-package Jogo;
+package ProgJogo;
 import java.util.Scanner;
 public class Main {
     public static void main(final String[] args) {

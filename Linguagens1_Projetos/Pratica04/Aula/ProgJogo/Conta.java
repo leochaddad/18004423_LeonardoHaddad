@@ -1,4 +1,4 @@
-package Jogo;
+package ProgJogo;
 import java.util.ArrayList;
 
 public class Conta {
