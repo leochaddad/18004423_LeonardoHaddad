@@ -1,4 +1,4 @@
-package ProgJogo;
+
 public class Jogo {
     private String nome;
     private String genero;
