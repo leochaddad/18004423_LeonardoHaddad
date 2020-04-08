@@ -12,7 +12,6 @@ public class EntradaDeDados{
         n2=scanner.nextDouble();
         scanner.close();
         System.out.println("A soma é "+ (n1+n2 ) );
-        System.out.println("Lalalalal");
         System.out.println("teste 2");
         if(n1>n2){
             System.out.println("N1 Maior");
