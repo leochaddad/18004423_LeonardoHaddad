@@ -1,4 +1,3 @@
-package Concessionaria;
 public class RH {
     public static void rodarRH(){
         Funcionario f1;

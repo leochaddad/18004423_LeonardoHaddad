@@ -1,4 +1,4 @@
-package Concessionaria;
+
 
 public class GerenteVendas {
     private final double salarioBase;

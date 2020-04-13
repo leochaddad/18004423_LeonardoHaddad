@@ -1,5 +1,3 @@
-package Concessionaria;
-
 public class Funcionario {
     private double salarioBase;
     private double comissao;

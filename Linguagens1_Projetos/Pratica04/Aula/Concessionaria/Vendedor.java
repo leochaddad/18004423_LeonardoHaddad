@@ -1,4 +1,4 @@
-package Concessionaria;
+
 public class Vendedor {
     private double salarioBase;
     private final double comissao;
