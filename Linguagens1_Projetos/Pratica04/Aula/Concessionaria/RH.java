@@ -1,7 +1,7 @@
 public class RH {
     public static void rodarRH(){
-        GerenteVendas g1, g2;
-        Vendedor v1, v2;
+        GerenteVendas g1;
+        Vendedor v1;
         double totalDeVendas = 1000;
         g1 = new GerenteVendas(1000);
         v1 = new Vendedor(1000, g1);
