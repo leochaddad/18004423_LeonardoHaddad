@@ -1,11 +1,19 @@
 public class RH {
     public static void rodarRH(){
-        Funcionario f1;
-        f1 = new Funcionario(1000);
-        System.out.println("Salario vendedor: " + f1.getSalarioFinal(10000));
-        GerenteVendas g1 = new GerenteVendas(5000);
-        Vendedor v1 = new Vendedor(1000, g1);
-        g1.darAumento(v1, 0.3);
-        System.out.println("Salario V1: "+v1.getSalarioBase());
+        GerenteVendas g1, g2;
+        Vendedor v1, v2;
+        double totalDeVendas = 1000;
+        g1 = new GerenteVendas(1000);
+        v1 = new Vendedor(1000, g1);
+        exibirSalarioFinal(totalDeVendas, g1);
+        exibirSalarioFinal(totalDeVendas, v1);
+        if(g1.darAumento(v1, 0.1))
+            System.out.println("Aumento Deu Certo!");
+        exibirSalarioFinal(totalDeVendas, v1);
     }
+
+    public static void exibirSalarioFinal(double totalDeVendas, Funcionario funcionario){
+        System.out.println("Salario Final:" + funcionario.getSalarioFinal(totalDeVendas));
+    }
+
 }
