@@ -3,7 +3,7 @@ package br.maua.models;
 import br.maua.enums.cargos;
 import br.maua.enums.horarios;
 
-public class heavyLifter extends membro {
+public class heavyLifter extends Membro {
 
     public heavyLifter(String nome, String email) {
         super(nome, email, cargos.HEAVY_LIFTERS);

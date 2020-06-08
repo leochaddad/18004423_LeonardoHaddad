@@ -3,7 +3,7 @@ package br.maua.models;
 import br.maua.enums.cargos;
 import br.maua.enums.horarios;
 
-public class scriptGuy extends membro {
+public class scriptGuy extends Membro {
 
     public scriptGuy(String nome, String email) {
         super(nome, email, cargos.SCRIPT_GUYS);

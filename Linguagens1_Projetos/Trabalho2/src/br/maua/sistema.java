@@ -1,6 +1,5 @@
 package br.maua;
 
-import br.maua.enums.cargos;
 import br.maua.enums.horarios;
 import br.maua.models.*;
 
@@ -9,15 +8,32 @@ import java.util.Scanner;
 
 public class sistema {
     Scanner scanner = new Scanner(System.in);
+
+    public sistema(horarios horario) {
+        this.horario = horario;
+    }
+
+
     private horarios horario;
-    private ArrayList<membro> membros = new ArrayList<membro>();
+    private ArrayList<Membro> membros = new ArrayList<Membro>();
+
 
     public horarios getHorario() {
         return horario;
     }
 
-    public void apresentarMenu(){
+    public void setHorario(horarios horario) {
+        this.horario = horario;
+    }
 
+    public void apresentarMenu(){
+        System.out.println("Bem vindo, Horário: "+ this.getHorario());
+        System.out.println("1-Cadastrar Membro");
+        System.out.println("2-Demitir Membro");
+        System.out.println("3-Exibir Mensagens");
+        System.out.println("4-Trocar Horário");
+        System.out.println("5-Sair");
+        System.out.println("Opção: ");
     }
 
     public void cadastrarUsuario(String nome, String email, int cargo){
@@ -44,15 +60,21 @@ public class sistema {
     }
 
     public void trocarHorario(){
-
+        if(this.getHorario()==horarios.REGULAR){
+            setHorario(horarios.EXTRA);
+        }
+        else{
+            setHorario(horarios.REGULAR);
+        }
     }
 
-    public void demitir(){
-
+    public Membro demitir(int indice){
+        return membros.remove(indice);
     }
 
     public void run(){
-        while(true){
+        boolean sair = false;
+        while(!sair){
             apresentarMenu();
             int opcao = Integer.parseInt(scanner.nextLine());
             switch(opcao){
@@ -66,10 +88,25 @@ public class sistema {
                     cadastrarUsuario(nome,email,cargo);
                     break;
                 case(2):
-                    for(membro a: membros){
-                        System.out.println(a.getEmail());
+                    for(Membro membro: membros){
+                        System.out.println(membros.indexOf(membro)+"-"+membro.toString());
                     }
+                    System.out.println("Demitir membro de índice: ");
+                    int indice = Integer.parseInt(scanner.nextLine());
+                    demitir(indice);
+                    break;
+                case(3):
+                    for(Membro membro: membros){
+                        membro.postarMensagem(this.getHorario());
+                    }
+                    break;
+                case(4):
+                    trocarHorario();
+                    break;
+                case(5):
+                    sair = true;
             }
+
         }
     }
 

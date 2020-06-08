@@ -5,13 +5,21 @@ import br.maua.enums.cargos;
 import br.maua.interfaces.postarMensagem;
 
 
-public abstract class membro implements postarMensagem {
+public abstract class Membro implements postarMensagem {
+    @Override
+    public String toString() {
+        return "membro{" +
+                "nome='" + nome + '\'' +
+                ", email='" + email + '\'' +
+                ", cargo=" + cargo +
+                '}';
+    }
 
     private String nome;
     private String email;
     private cargos cargo;
 
-    public membro(String nome, String email, cargos cargo){
+    public Membro(String nome, String email, cargos cargo){
         this.nome = nome;
         this.email= email;
         this.cargo = cargo;

@@ -3,7 +3,7 @@ package br.maua.models;
 import br.maua.enums.cargos;
 import br.maua.enums.horarios;
 
-public class mobileMember extends membro {
+public class mobileMember extends Membro {
     public mobileMember(String nome, String email) {
         super(nome, email, cargos.MOBILE_MEMBERS);
     }
