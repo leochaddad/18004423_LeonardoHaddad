@@ -1,14 +1,15 @@
 package br.maua;
 
 import pacote.QualquerCoisa;
-import pacote.Dog;
 
 public class Main {
 
     public static void main(String[] args) {
         QualquerCoisa meuqqcoisa = new QualquerCoisa();
-        Dog dog = new Dog();
-        dog.latir();
+        Dog dog1 = new Dog();
+        pacote.Dog dog2 = new pacote.Dog();
+        dog1.latir();
+        dog2.latir();
         meuqqcoisa.ola();
     }
 }

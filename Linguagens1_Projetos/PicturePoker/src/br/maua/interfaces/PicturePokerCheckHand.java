@@ -3,6 +3,8 @@ package br.maua.interfaces;
 import br.maua.models.PicturePokerCard;
 import br.maua.models.PicturePokerHandValues;
 
-public interface CheckHand {
+import java.util.List;
+
+public interface PicturePokerCheckHand {
     PicturePokerHandValues checkHand(List<PicturePokerCard> cardList);
 }
