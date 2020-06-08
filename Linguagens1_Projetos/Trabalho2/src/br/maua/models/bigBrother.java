@@ -1,6 +1,7 @@
 package br.maua.models;
 
 import br.maua.enums.cargos;
+import br.maua.enums.horarios;
 
 public class bigBrother extends membro{
 
@@ -9,7 +10,14 @@ public class bigBrother extends membro{
     }
 
     @Override
-    public void postarMensagem() {
-
+    public void postarMensagem(horarios horario) {
+        switch(horario){
+            case REGULAR:
+                System.out.println("Sempre ajudando as pessoas membros ou não S2!");
+                break;
+            case EXTRA:
+                System.out.println("...");
+                break;
+        }
     }
 }

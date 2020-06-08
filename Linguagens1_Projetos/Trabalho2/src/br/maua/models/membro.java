@@ -9,7 +9,6 @@ public abstract class membro implements postarMensagem {
 
     private String nome;
     private String email;
-    private horarios horario;
     private cargos cargo;
 
     public membro(String nome, String email, cargos cargo){
@@ -18,9 +17,6 @@ public abstract class membro implements postarMensagem {
         this.cargo = cargo;
     }
 
-    public horarios perguntarHorario(){
-        return horario;
-    }
 
     public String getNome() {
         return nome;
@@ -30,9 +26,6 @@ public abstract class membro implements postarMensagem {
         return email;
     }
 
-    public horarios getHorario() {
-        return horario;
-    }
 
     public cargos getCargo() {
         return this.cargo;
