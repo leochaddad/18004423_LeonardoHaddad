@@ -9,6 +9,11 @@ public class scriptGuy extends Membro {
         super(nome, email, cargos.SCRIPT_GUYS);
     }
 
+
+    /**
+    * Imprime a mensagem correta dado o HORÁRIO atual 
+    */
+
     @Override
     public void postarMensagem(horarios horario) {
         switch(horario){

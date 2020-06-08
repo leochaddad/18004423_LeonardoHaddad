@@ -9,6 +9,10 @@ public class bigBrother extends Membro {
         super(nome, email, cargos.BIG_BROTHERS);
     }
 
+    /**
+    * Imprime a mensagem correta dado o HORÁRIO atual 
+    */
+
     @Override
     public void postarMensagem(horarios horario) {
         switch(horario){

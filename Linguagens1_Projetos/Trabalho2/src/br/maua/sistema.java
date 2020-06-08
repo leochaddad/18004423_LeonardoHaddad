@@ -9,22 +9,43 @@ import java.util.Scanner;
 public class sistema {
     Scanner scanner = new Scanner(System.in);
 
-    public sistema(horarios horario) {
+    /**
+     * SISTEMA para rodar o programa principal
+     * @param horario Enum que dita o horário atual
+    */
+
+    public sistema(final horarios horario) {
         this.horario = horario;
     }
 
 
     private horarios horario;
-    private ArrayList<Membro> membros = new ArrayList<Membro>();
+    private final ArrayList<Membro> membros = new ArrayList<Membro>();
 
+
+    /**
+     * Retorna o HORÁRIO atual 
+    */
 
     public horarios getHorario() {
         return horario;
     }
 
-    public void setHorario(horarios horario) {
+
+    
+    /**
+     * Muda o HORÁRIO atual entre EXTRA e REGULAR 
+    */
+
+    
+    public void setHorario(final horarios horario) {
         this.horario = horario;
     }
+
+
+    /**
+    * Menu de Apresentação
+    */
 
     public void apresentarMenu(){
         System.out.println("Bem vindo, Horário: "+ this.getHorario());
@@ -36,28 +57,40 @@ public class sistema {
         System.out.println("Opção: ");
     }
 
-    public void cadastrarUsuario(String nome, String email, int cargo){
+    /**
+    * Cadastra Usuário e suas informações
+    * @param nome Nome do Usuário
+    * @param email Email do Usuário
+    * @param cargo atribuido ao Objeto   
+    */
+
+    public void cadastrarUsuario(final String nome, final String email, final int cargo){
         switch(cargo) {
             case (1):
-                mobileMember novo_membro1 = new mobileMember(nome, email);
+                final mobileMember novo_membro1 = new mobileMember(nome, email);
                 membros.add(novo_membro1);
                 break;
             case (2):
-                heavyLifter novo_membro2 = new heavyLifter(nome, email);
+                final heavyLifter novo_membro2 = new heavyLifter(nome, email);
                 membros.add(novo_membro2);
                 break;
             case (3):
-                bigBrother novo_membro3 = new bigBrother(nome, email);
+                final bigBrother novo_membro3 = new bigBrother(nome, email);
                 membros.add(novo_membro3);
                 break;
             case (4):
-                scriptGuy novo_membro4 = new scriptGuy(nome, email);
+                final scriptGuy novo_membro4 = new scriptGuy(nome, email);
                 membros.add(novo_membro4);
                 break;
         }
 
 
     }
+
+
+    /**
+    *  Troca entre HORÁRIO EXTRE e HORÁRIO REGULAR 
+    */
 
     public void trocarHorario(){
         if(this.getHorario()==horarios.REGULAR){
@@ -68,35 +101,45 @@ public class sistema {
         }
     }
 
-    public Membro demitir(int indice){
+
+    /**
+    * Remove Usuário cadastrado da lista
+    */
+
+
+    public Membro demitir(final int indice){
         return membros.remove(indice);
     }
+
+    /**
+    * Executa as funções do MENU
+    */
 
     public void run(){
         boolean sair = false;
         while(!sair){
             apresentarMenu();
-            int opcao = Integer.parseInt(scanner.nextLine());
+            final int opcao = Integer.parseInt(scanner.nextLine());
             switch(opcao){
                 case(1):
                     System.out.println("1-MobileMember\n2-HeavyLifter\n3-BigBrother\n4-ScriptGuy\nCargo: ");
-                    int cargo = Integer.parseInt(scanner.nextLine());
+                    final int cargo = Integer.parseInt(scanner.nextLine());
                     System.out.println("Nome: ");
-                    String nome = scanner.nextLine();
+                    final String nome = scanner.nextLine();
                     System.out.println("E-mail: ");
-                    String email = scanner.nextLine();
+                    final String email = scanner.nextLine();
                     cadastrarUsuario(nome,email,cargo);
                     break;
                 case(2):
-                    for(Membro membro: membros){
+                    for(final Membro membro: membros){
                         System.out.println(membros.indexOf(membro)+"-"+membro.toString());
                     }
                     System.out.println("Demitir membro de índice: ");
-                    int indice = Integer.parseInt(scanner.nextLine());
+                    final int indice = Integer.parseInt(scanner.nextLine());
                     demitir(indice);
                     break;
                 case(3):
-                    for(Membro membro: membros){
+                    for(final Membro membro: membros){
                         membro.postarMensagem(this.getHorario());
                     }
                     break;

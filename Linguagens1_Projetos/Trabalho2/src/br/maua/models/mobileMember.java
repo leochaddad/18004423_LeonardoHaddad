@@ -8,6 +8,11 @@ public class mobileMember extends Membro {
         super(nome, email, cargos.MOBILE_MEMBERS);
     }
 
+
+    /**
+    * Imprime a mensagem correta dado o HORÁRIO atual 
+    */
+    
     @Override
     public void postarMensagem(horarios horario) {
         switch(horario){
