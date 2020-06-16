@@ -15,6 +15,10 @@ public class Usuario implements autenticavel {
         this.senha = senha;
     }
 
+    public String getNome() {
+        return nome;
+    }
+
     @Override
     public boolean autenticar(String senha) {
         return (this.senha.equals(senha));
