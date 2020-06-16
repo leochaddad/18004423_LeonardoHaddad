@@ -50,6 +50,7 @@ public class Pedido {
                 "Criado por: " + criador.getNome()+'\n'+
                 "Descricao: " + descricao + '\n' +
                 "Total: " + valor + '\n' +
-                "Forma de Pagamento: " + pagamento + '\n';
+                "Forma de Pagamento: " + pagamento + '\n'+
+                "Estado: " + estado;
     }
 }
