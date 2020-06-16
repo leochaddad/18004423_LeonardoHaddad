@@ -51,6 +51,7 @@ public class Pedido {
                 "Descricao: " + descricao + '\n' +
                 "Total: " + valor + '\n' +
                 "Forma de Pagamento: " + pagamento + '\n'+
-                "Estado: " + estado;
+                "Estado: " + estado+'\n'+
+                "--------------------------------------";
     }
 }

@@ -4,6 +4,7 @@ import br.maua.enums.estadosPedido;
 import br.maua.enums.formasDePagamento;
 
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -16,7 +17,33 @@ public class Sistema {
         this.usuario = usuario;
     }
 
-    public void novoPedido(){
+    public void run(){
+        boolean continuar = true;
+        while(continuar){
+            mostrarMenu();
+            System.out.println("Opcao: ");
+            String opcao = scanner.nextLine();
+            switch (opcao){
+                case("0"):
+                    continuar = false;
+                    break;
+                case("1"):
+                    novoPedido();
+                    segurarELimpar();
+                    break;
+                case("2"):
+                    listarPedidos();
+                    segurarELimpar();
+                    break;
+                case("3"):
+                    alterarPedido();
+                    segurarELimpar();
+                    break;
+            }
+        }
+    }
+
+    private void novoPedido(){
         System.out.println("Descrição do pedido: ");
         String descricao = scanner.nextLine();
         System.out.println("Valor: ");
@@ -28,7 +55,7 @@ public class Sistema {
         listaPedidos.add(novoPedido);
     }
 
-    public void alterarPedido(){
+    private void alterarPedido(){
         listarPedidos();
         System.out.println("Alterar pedido #: ");
         String id  = scanner.nextLine();
@@ -40,17 +67,17 @@ public class Sistema {
             System.out.println("Alterado.");
         }
         else{
-            System.out.println("Pedido não encontrado.");
+            System.out.println("Pedido nao encontrado.");
         }
     }
 
-    public void listarPedidos(){
+    private void listarPedidos(){
         for(Pedido pedido:listaPedidos){
             System.out.println(pedido);
         }
     }
 
-    public void listarFormasDePagamento(){
+    private void listarFormasDePagamento(){
         int indice = 0;
         System.out.print("| ");
         for(formasDePagamento formaDePagamento : formasDePagamento.values()){
@@ -60,7 +87,7 @@ public class Sistema {
         System.out.println("");
     }
 
-    public void listarEstados(){
+    private void listarEstados(){
         int indice = 0;
         System.out.print("| ");
         for(estadosPedido estado : estadosPedido.values()){
@@ -78,5 +105,31 @@ public class Sistema {
         }
         return null;
     }
+
+    private void mostrarMenu(){
+        System.out.println("Pizzaria o Rato que Ri:");
+        System.out.println("1 - Nova venda");
+        System.out.println("2 - Verificar pedidos");
+        System.out.println("3 - Alterar pedido");
+        System.out.println("0 - Sair");
+    }
+
+    private void segurarELimpar(){
+        System.out.println("PRESSIONE ENTER PARA VOLTAR AO MENU");
+        scanner.nextLine();
+        limpar();
+    }
+
+    private void limpar(){
+        //Clears Screen in java
+        //nao e meu codigo: https://stackoverflow.com/questions/2979383/java-clear-the-console
+        try {
+            if (System.getProperty("os.name").contains("Windows"))
+                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+            else
+                Runtime.getRuntime().exec("clear");
+        } catch (IOException | InterruptedException ex) {}
+    }
+
 
 }
