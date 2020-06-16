@@ -35,6 +35,10 @@ public class Pedido {
         return idGerado;
     }
 
+    public String getId() {
+        return id;
+    }
+
     public void alterarEstado(estadosPedido novoEstado){
         this.estado = novoEstado;
     }
