@@ -2,7 +2,6 @@ package br.maua.models;
 
 import br.maua.enums.estadosPedido;
 import br.maua.enums.formasDePagamento;
-import br.maua.interfaces.autenticavel;
 
 
 import java.util.ArrayList;
@@ -29,20 +28,19 @@ public class Sistema {
         listaPedidos.add(novoPedido);
     }
 
-    public boolean alterarPedido(){
+    public void alterarPedido(){
         listarPedidos();
+        System.out.println("Alterar pedido #: ");
         String id  = scanner.nextLine();
         if(buscarPedidoPorId(id)!=null){
             Pedido pedidoParaAlterar = buscarPedidoPorId(id);
-            listaPedidos.remove(buscarPedidoPorId(id));
             listarEstados();
+            System.out.println("Estado: ");
             pedidoParaAlterar.alterarEstado(estadosPedido.values()[Integer.parseInt(scanner.nextLine())]);
-            System.out.println("Estado alterado.");
-            return true;
+            System.out.println("Alterado.");
         }
         else{
             System.out.println("Pedido não encontrado.");
-            return false;
         }
     }
 
@@ -54,18 +52,22 @@ public class Sistema {
 
     public void listarFormasDePagamento(){
         int indice = 0;
+        System.out.print("| ");
         for(formasDePagamento formaDePagamento : formasDePagamento.values()){
-            System.out.println(indice +" - "+ formaDePagamento);
+            System.out.print(indice +" - "+ formaDePagamento +" | " );
             indice++;
         }
+        System.out.println("");
     }
 
     public void listarEstados(){
         int indice = 0;
+        System.out.print("| ");
         for(estadosPedido estado : estadosPedido.values()){
-            System.out.println(indice +" - "+ estado);
+            System.out.print(indice +" - "+ estado + " | ");
             indice++;
         }
+        System.out.println("");
     }
 
     private Pedido buscarPedidoPorId(String id){
