@@ -29,11 +29,29 @@ public class Sistema {
         listaPedidos.add(novoPedido);
     }
 
+    public boolean alterarPedido(){
+        listarPedidos();
+        String id  = scanner.nextLine();
+        if(buscarPedidoPorId(id)!=null){
+            Pedido pedidoParaAlterar = buscarPedidoPorId(id);
+            listaPedidos.remove(buscarPedidoPorId(id));
+            listarEstados();
+            pedidoParaAlterar.alterarEstado(estadosPedido.values()[Integer.parseInt(scanner.nextLine())]);
+            System.out.println("Estado alterado.");
+            return true;
+        }
+        else{
+            System.out.println("Pedido não encontrado.");
+            return false;
+        }
+    }
+
     public void listarPedidos(){
         for(Pedido pedido:listaPedidos){
             System.out.println(pedido);
         }
     }
+
     public void listarFormasDePagamento(){
         int indice = 0;
         for(formasDePagamento formaDePagamento : formasDePagamento.values()){
@@ -48,6 +66,15 @@ public class Sistema {
             System.out.println(indice +" - "+ estado);
             indice++;
         }
+    }
+
+    private Pedido buscarPedidoPorId(String id){
+        for(Pedido pedido:listaPedidos){
+            if(pedido.getId().equals(id)){
+                return pedido;
+            };
+        }
+        return null;
     }
 
 }
