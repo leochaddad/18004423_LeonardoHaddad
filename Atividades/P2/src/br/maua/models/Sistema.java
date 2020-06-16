@@ -28,7 +28,9 @@ public class Sistema {
                     continuar = false;
                     break;
                 case("1"):
-                    novoPedido();
+                    if(autenticar()){
+                        novoPedido();
+                    }
                     segurarELimpar();
                     break;
                 case("2"):
@@ -36,7 +38,9 @@ public class Sistema {
                     segurarELimpar();
                     break;
                 case("3"):
-                    alterarPedido();
+                    if(autenticar()){
+                        alterarPedido();
+                    }
                     segurarELimpar();
                     break;
             }
@@ -44,6 +48,7 @@ public class Sistema {
     }
 
     private void novoPedido(){
+        System.out.println("************{ NOVO PEDIDO }***********");
         System.out.println("Descrição do pedido: ");
         String descricao = scanner.nextLine();
         System.out.println("Valor: ");
@@ -107,17 +112,31 @@ public class Sistema {
     }
 
     private void mostrarMenu(){
-        System.out.println("Pizzaria o Rato que Ri:");
+        System.out.println("**************************************");
+        System.out.println("        Pizzaria o Rato que Ri:");
+        System.out.println("       +++++++++++++++++++++++++     ");
         System.out.println("1 - Nova venda");
         System.out.println("2 - Verificar pedidos");
         System.out.println("3 - Alterar pedido");
         System.out.println("0 - Sair");
+        System.out.println("**************************************");
     }
 
     private void segurarELimpar(){
         System.out.println("PRESSIONE ENTER PARA VOLTAR AO MENU");
         scanner.nextLine();
         limpar();
+    }
+
+    private boolean autenticar(){
+        System.out.println("Senha: ");
+        if(usuario.autenticar(scanner.nextLine())){
+            return true;
+        }
+        else{
+            System.out.println("Operacao negada!");
+            return false;
+        }
     }
 
     private void limpar(){
