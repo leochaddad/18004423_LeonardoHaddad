@@ -40,10 +40,11 @@ public class Pedido {
 
     @Override
     public String toString() {
-        return "Pedido: " + id + '\'' +
-                "Descricao: " + descricao + '\'' +
-                "Total: " + valor +
-                "Forma de Pagamento: " + pagamento +
-                "Criado por: " + usuario.getNome() + '\'';
+        return  "--------------------------------------\n"+
+                "Pedido: " + id + '\n' +
+                "Criado por: " + usuario.getNome()+'\n'+
+                "Descricao: " + descricao + '\n' +
+                "Total: " + valor + '\n' +
+                "Forma de Pagamento: " + pagamento + '\n';
     }
 }
