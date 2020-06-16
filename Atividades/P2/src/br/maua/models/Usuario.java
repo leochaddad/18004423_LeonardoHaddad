@@ -1,8 +1,9 @@
 package br.maua.models;
 
 import br.maua.interfaces.autenticavel;
+import br.maua.interfaces.pessoa;
 
-public class Usuario implements autenticavel {
+public class Usuario implements autenticavel, pessoa {
 
     private String nome;
     private String email;

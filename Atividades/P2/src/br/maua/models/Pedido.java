@@ -2,6 +2,7 @@ package br.maua.models;
 
 import br.maua.enums.estadosPedido;
 import br.maua.enums.formasDePagamento;
+import br.maua.interfaces.pessoa;
 
 
 import java.util.Random;
@@ -12,16 +13,16 @@ public class Pedido {
     float valor;
     formasDePagamento pagamento;
     estadosPedido estado;
-    Usuario usuario;
+    pessoa criador;
 
 
-    public Pedido(Usuario usuario, String descricao, float valor, formasDePagamento pagamento) {
+    public Pedido(pessoa criador, String descricao, float valor, formasDePagamento pagamento) {
         this.descricao = descricao;
         this.valor = valor;
         this.pagamento = pagamento;
         this.estado = estadosPedido.REALIZADO;
         this.id = this.gerarId();
-        this.usuario = usuario;
+        this.criador = criador;
     }
 
 
@@ -42,7 +43,7 @@ public class Pedido {
     public String toString() {
         return  "--------------------------------------\n"+
                 "Pedido: " + id + '\n' +
-                "Criado por: " + usuario.getNome()+'\n'+
+                "Criado por: " + criador.getNome()+'\n'+
                 "Descricao: " + descricao + '\n' +
                 "Total: " + valor + '\n' +
                 "Forma de Pagamento: " + pagamento + '\n';
