@@ -18,11 +18,13 @@ public class Sistema {
     }
 
     public void run(){
+        limpar();
         boolean continuar = true;
         while(continuar){
             mostrarMenu();
             System.out.println("Opcao: ");
             String opcao = scanner.nextLine();
+            limpar();
             switch (opcao){
                 case("0"):
                     continuar = false;
@@ -31,33 +33,45 @@ public class Sistema {
                     if(autenticar()){
                         novoPedido();
                     }
-                    segurarELimpar();
+                    segurar();
+                    limpar();
                     break;
                 case("2"):
                     listarPedidos();
-                    segurarELimpar();
+                    segurar();
+                    limpar();
                     break;
                 case("3"):
                     if(autenticar()){
+                        limpar();
                         alterarPedido();
                     }
-                    segurarELimpar();
+                    segurar();
+                    limpar();
                     break;
             }
         }
     }
 
     private void novoPedido(){
+        limpar();
         System.out.println("************{ NOVO PEDIDO }***********");
         System.out.println("Descrição do pedido: ");
+        System.out.println("......................................");
         String descricao = scanner.nextLine();
+        System.out.println("......................................");
         System.out.println("Valor: ");
         float valor = Float.parseFloat(scanner.nextLine());
+        System.out.println("......................................");
         System.out.println("Forma de pagamento: ");
         listarFormasDePagamento();
         formasDePagamento formaDePagamento  = formasDePagamento.values()[Integer.parseInt(scanner.nextLine())];
+        System.out.println("......................................");
         Pedido novoPedido = new Pedido(usuario, descricao, valor, formaDePagamento);
         listaPedidos.add(novoPedido);
+        limpar();
+        System.out.println(novoPedido);
+        System.out.println("\nPedido criado.");
     }
 
     private void alterarPedido(){
@@ -66,17 +80,23 @@ public class Sistema {
         String id  = scanner.nextLine();
         if(buscarPedidoPorId(id)!=null){
             Pedido pedidoParaAlterar = buscarPedidoPorId(id);
+            limpar();
+            System.out.println(pedidoParaAlterar);
             listarEstados();
             System.out.println("Estado: ");
             pedidoParaAlterar.alterarEstado(estadosPedido.values()[Integer.parseInt(scanner.nextLine())]);
+            limpar();
+            System.out.println(pedidoParaAlterar);
             System.out.println("Alterado.");
         }
         else{
+            limpar();
             System.out.println("Pedido nao encontrado.");
         }
     }
 
     private void listarPedidos(){
+        limpar();
         for(Pedido pedido:listaPedidos){
             System.out.println(pedido);
         }
@@ -84,9 +104,9 @@ public class Sistema {
 
     private void listarFormasDePagamento(){
         int indice = 0;
-        System.out.print("| ");
+
         for(formasDePagamento formaDePagamento : formasDePagamento.values()){
-            System.out.print(indice +" - "+ formaDePagamento +" | " );
+            System.out.println("( "+ indice +" )" +" - "+ formaDePagamento);
             indice++;
         }
         System.out.println("");
@@ -94,9 +114,8 @@ public class Sistema {
 
     private void listarEstados(){
         int indice = 0;
-        System.out.print("| ");
         for(estadosPedido estado : estadosPedido.values()){
-            System.out.print(indice +" - "+ estado + " | ");
+            System.out.println("( "+ indice +" )" +" - "+ estado);
             indice++;
         }
         System.out.println("");
@@ -122,10 +141,13 @@ public class Sistema {
         System.out.println("**************************************");
     }
 
-    private void segurarELimpar(){
-        System.out.println("PRESSIONE ENTER PARA VOLTAR AO MENU");
+    private void segurar(){
+        System.out.println("\nPRESSIONE ENTER PARA VOLTAR AO MENU");
         scanner.nextLine();
-        limpar();
+
+    }
+    private void limpar(){
+        System.out.print("\033[H\033[2J");
     }
 
     private boolean autenticar(){
@@ -138,17 +160,5 @@ public class Sistema {
             return false;
         }
     }
-
-    private void limpar(){
-        //Clears Screen in java
-        //nao e meu codigo: https://stackoverflow.com/questions/2979383/java-clear-the-console
-        try {
-            if (System.getProperty("os.name").contains("Windows"))
-                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-            else
-                Runtime.getRuntime().exec("clear");
-        } catch (IOException | InterruptedException ex) {}
-    }
-
 
 }
