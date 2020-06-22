@@ -8,6 +8,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Faz o gerenciamento da lista de pedidos e i/o.
+ */
 public class Sistema {
     Scanner scanner = new Scanner(System.in);
     Usuario usuario;
@@ -17,6 +20,9 @@ public class Sistema {
         this.usuario = usuario;
     }
 
+    /**
+     * Roda o sistema principal, exibindo o menu, aguardando a opção do usuário e tomando ações.
+     */
     public void run(){
         limpar();
         boolean continuar = true;
@@ -53,6 +59,9 @@ public class Sistema {
         }
     }
 
+    /**
+     * Rotina que exibe informações, solicita inputs do usuário para criar novo pedido e adiciona a listaPedidos
+     */
     private void novoPedido(){
         limpar();
         System.out.println("************{ NOVO PEDIDO }***********");
@@ -74,6 +83,9 @@ public class Sistema {
         System.out.println("\nPedido criado.");
     }
 
+    /**
+     * Rotina que exibe pedidos, solicita id e altera o estado do pedido com base no input do usuário.
+     */
     private void alterarPedido(){
         listarPedidos();
         System.out.println("Alterar pedido #: ");
@@ -95,13 +107,18 @@ public class Sistema {
         }
     }
 
+    /**
+     * Rotina que exibe todos os pedidos na lista
+     */
     private void listarPedidos(){
         limpar();
         for(Pedido pedido:listaPedidos){
             System.out.println(pedido);
         }
     }
-
+    /**
+     * Rotina que exibe enum formasDePagamento com indice.
+     */
     private void listarFormasDePagamento(){
         int indice = 0;
 
@@ -109,27 +126,36 @@ public class Sistema {
             System.out.println("( "+ indice +" )" +" - "+ formaDePagamento);
             indice++;
         }
-        System.out.println("");
+        System.out.println();
     }
-
+    /**
+     * Rotina que exibe enum estadosPedido com indice.
+     */
     private void listarEstados(){
         int indice = 0;
         for(estadosPedido estado : estadosPedido.values()){
             System.out.println("( "+ indice +" )" +" - "+ estado);
             indice++;
         }
-        System.out.println("");
+        System.out.println();
     }
 
+    /**
+     * @param id Id do pedido a ser encontrado
+     * @return Pedido se houver, null caso contário.
+     */
     private Pedido buscarPedidoPorId(String id){
         for(Pedido pedido:listaPedidos){
             if(pedido.getId().equals(id)){
                 return pedido;
-            };
+            }
         }
         return null;
     }
 
+    /**
+     * Rotina exibe menu de opções para o usuário
+     */
     private void mostrarMenu(){
         System.out.println("**************************************");
         System.out.println("        Pizzaria o Rato que Ri:");
@@ -141,15 +167,26 @@ public class Sistema {
         System.out.println("**************************************");
     }
 
+    /**
+     * Rotina aguarda enter do usuário antes de tomar próxima ação
+     */
     private void segurar(){
         System.out.println("\nPRESSIONE ENTER PARA VOLTAR AO MENU");
         scanner.nextLine();
 
     }
+
+    /**
+     * Rotina limpa a tela
+     */
     private void limpar(){
         System.out.print("\033[H\033[2J");
     }
 
+    /**
+     * Rotina solicita senha ao usuário e confere se é igual a do usuário do sistema.
+     * @return true se senha confere, false caso contário
+     */
     private boolean autenticar(){
         System.out.println("Senha: ");
         if(usuario.autenticar(scanner.nextLine())){

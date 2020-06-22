@@ -2,21 +2,30 @@ package br.maua.models;
 
 import br.maua.enums.estadosPedido;
 import br.maua.enums.formasDePagamento;
-import br.maua.interfaces.pessoa;
+import br.maua.interfaces.Pessoa;
 
 
 import java.util.Random;
 
+/**
+ * Possui dados do pedido e métodos.
+ */
 public class Pedido {
     String id;
     String descricao;
     float valor;
     formasDePagamento pagamento;
     estadosPedido estado;
-    pessoa criador;
+    Pessoa criador;
 
 
-    public Pedido(pessoa criador, String descricao, float valor, formasDePagamento pagamento) {
+    /**
+     * @param criador Pessoa que criou o pedido
+     * @param descricao Descrição do pedido
+     * @param valor Valor total do pedido
+     * @param pagamento Forma de pagamento
+     */
+    public Pedido(Pessoa criador, String descricao, float valor, formasDePagamento pagamento) {
         this.descricao = descricao;
         this.valor = valor;
         this.pagamento = pagamento;
@@ -26,6 +35,9 @@ public class Pedido {
     }
 
 
+    /**
+     * @return ID de 3 dígitos aleatórios
+     */
     private String gerarId(){
         Random random = new Random();
         String idGerado = "";
@@ -35,6 +47,9 @@ public class Pedido {
         return idGerado;
     }
 
+    /**
+     * @return ID do pedido
+     */
     public String getId() {
         return id;
     }
@@ -43,6 +58,9 @@ public class Pedido {
         this.estado = novoEstado;
     }
 
+    /**
+     * @return Texto formatado com informações do pedido
+     */
     @Override
     public String toString() {
         return  "--------------------------------------\n"+
