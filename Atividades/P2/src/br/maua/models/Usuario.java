@@ -3,6 +3,9 @@ package br.maua.models;
 import br.maua.interfaces.Autenticavel;
 import br.maua.interfaces.Pessoa;
 
+/**
+ * Usuário, implementa Autenticavel e Pessoa, possui nome, email, senha e métodos de autenticação.
+ */
 public class Usuario implements Autenticavel, Pessoa {
 
     private final String nome;
