@@ -2,6 +2,7 @@ package br.maua.model;
 
 import br.maua.enums.Plataforma;
 import br.maua.enums.Status;
+import org.json.JSONObject;
 
 public class Jogo {
     private Plataforma plataforma;
@@ -29,5 +30,17 @@ public class Jogo {
                 ", nome='" + nome + '\'' +
                 ", status=" + status +
                 '}';
+    }
+
+    public String getPlataforma() {
+        return plataforma.toString();
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getStatus() {
+        return status.toString();
     }
 }
